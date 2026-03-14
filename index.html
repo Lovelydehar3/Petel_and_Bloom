@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petal & Bloom | Fresh Flowers Delivered with Love</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'hsl(40 33% 97%)',
+                        foreground: 'hsl(20 10% 15%)',
+                        primary: 'hsl(160 22% 60%)',
+                        secondary: 'hsl(4 82% 73%)',
+                        muted: 'hsl(40 20% 93%)',
+                        'muted-foreground': 'hsl(20 10% 45%)',
+                        card: 'hsl(0 0% 100%)',
+                        border: 'hsl(30 15% 88%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-background text-foreground min-h-screen">
+    <nav class="sticky top-0 z-50 border-b border-border bg-white/80 backdrop-blur-md">
+        <div class="container mx-auto flex h-16 items-center justify-between px-4">
+            <a href="#" onclick="navigate('#/'); return false;" class="text-2xl font-bold tracking-tight" style="font-family: 'Playfair Display', serif;">
+                Petal <span class="text-primary">&</span> Bloom
+            </a>
+
+            <!-- Desktop links -->
+            <div class="hidden items-center gap-8 md:flex">
+                <a href="#" onclick="navigate('#/'); return false;" class="text-sm font-medium transition-colors hover:text-primary">Home</a>
+                <a href="#" onclick="navigate('#/shop'); return false;" class="text-sm font-medium transition-colors hover:text-primary">Shop</a>
+                <a href="#" onclick="navigate('#/about'); return false;" class="text-sm font-medium transition-colors hover:text-primary">About</a>
+            </div>
+
+            <div class="flex items-center gap-3">
+                <a href="#" onclick="navigate('#/shop'); return false;" class="hidden md:block p-2 hover:bg-muted rounded-full transition-colors">
+                    <i data-lucide="search" class="h-5 w-5"></i>
+                </a>
+                <a href="#" onclick="navigate('#/cart'); return false;" class="relative p-2 hover:bg-muted rounded-full transition-colors">
+                    <i data-lucide="shopping-cart" class="h-5 w-5"></i>
+                    <span id="cart-badge" class="absolute -right-1 -top-1 hidden h-5 w-5 items-center justify-center rounded-full bg-secondary text-[10px] font-bold text-white">0</span>
+                </a>
+                <a href="#" id="nav-auth-desktop" onclick="navigate('#/login'); return false;" class="hidden md:block px-4 py-2 border border-border rounded-lg text-sm font-medium hover:bg-muted transition-colors">
+                    Login
+                </a>
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 hover:bg-muted rounded-full transition-colors">
+                    <i data-lucide="menu" class="h-5 w-5"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu (hidden by default) -->
+        <div id="mobile-menu" class="hidden border-t border-border bg-white px-4 pb-4 pt-2 md:hidden">
+            <a href="#" onclick="navigate('#/'); return false;" class="block py-2 text-sm font-medium text-muted-foreground hover:text-primary">Home</a>
+            <a href="#" onclick="navigate('#/shop'); return false;" class="block py-2 text-sm font-medium text-muted-foreground hover:text-primary">Shop</a>
+            <a href="#" onclick="navigate('#/about'); return false;" class="block py-2 text-sm font-medium text-muted-foreground hover:text-primary">About</a>
+            <a href="#" id="nav-auth-mobile" onclick="navigate('#/login'); return false;" class="block mt-2 w-full px-4 py-2 text-center border border-border rounded-lg text-sm font-medium hover:bg-muted transition-colors">
+                Login
+            </a>
+        </div>
+    </nav>
+
+    <main id="app">
+        <!-- Content will be rendered here by script.js -->
+    </main>
+
+    <footer class="border-t border-border bg-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-2xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">Petal & Bloom</p>
+            <p class="text-muted-foreground mb-6">Hand-crafted floral arrangements for every occasion.</p>
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="#" class="text-muted-foreground hover:text-primary transition-colors"><i data-lucide="instagram"></i></a>
+                <a href="#" class="text-muted-foreground hover:text-primary transition-colors"><i data-lucide="facebook"></i></a>
+                <a href="#" class="text-muted-foreground hover:text-primary transition-colors"><i data-lucide="twitter"></i></a>
+            </div>
+            <p class="text-sm text-muted-foreground">© 2024 Petal & Bloom. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize icons
+        lucide.createIcons();
+        // Re-run icon initialization whenever content is re-rendered
+        const observer = new MutationObserver(() => lucide.createIcons());
+        observer.observe(document.getElementById('app'), { childList: true });
+    </script>
+</body>
+</html>
